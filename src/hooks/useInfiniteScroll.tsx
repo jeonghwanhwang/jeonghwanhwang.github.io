@@ -28,7 +28,9 @@ const useInfiniteScroll = (
         [selectedCategory],
     );
 
-    const observer: IntersectionObserver = new IntersectionObserver(
+    const observer = useRef<IntersectionObserver | null>(null)
+
+    observer.current = new IntersectionObserver(
         (entries, observer) => {
             if (!entries[0].isIntersecting) return;
 
@@ -47,9 +49,12 @@ const useInfiniteScroll = (
         )
             return
 
-        observer.observe(
-            containerRef.current.children[containerRef.current.children.length - 1],
-        )
+        if (observer && observer.current) {
+            observer.current.observe(
+                containerRef.current.children[containerRef.current.children.length - 1],
+            )
+        }
+
     }, [count, selectedCategory]);
 
     return {
