@@ -88,7 +88,7 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://[username].github.io/',
+        siteUrl: 'https://jeonghwanhwang.github.io/',
         stripQueryString: true,
       },
     },
